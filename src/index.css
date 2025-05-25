@@ -1,13 +1,353 @@
-body {
+body,html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #c2c3c4;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.note{
+  background-color: #ccccc7;
+
+ /*border-radius: 10px;*/ 
+/* padding:1rem;*/
+  min-height: 170px;
+  display :flex;
+  flex-direction: column;
+justify-content: space-between;
+white-space: pre-wrap;
+/*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+
+
+
+
+
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.note:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+
+.note-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.notes-list{
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  background-color: aliceblue;
+  width: 100%; /* stretch to full width of container */
+  flex-grow: 1;
+  padding: 1rem; /* optional for breathing space */
+  
+
+}
+
+.container {
+  
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  min-height: 100vh;
+}
+
+.note.new{
+ background-color: #67d7cc;
+
+}
+
+textarea{
+  border: none;
+  resize: none;
+  background-color: #67d7cc;
+}
+textarea:focus {
+  outline: none ;
+
+}
+.save{
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px;
+
+}
+.save:hover{
+  background-color: white;
+  cursor:pointer ;
+}
+
+.delete-icon{
+  cursor: pointer;
+  
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 450px; /* Adjust as needed */
+  flex-shrink: 0;
+}
+
+.search input{
+  border: none;
+  background-color:rgb(233, 233, 233) ;
+
+}
+
+.search input:focus{
+outline: none;
+}
+
+
+
+.dark-mode{
+  background-color: black;
+  
+
+}
+
+.dark-mode h1{
+  color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  height: 100vh;
+  width: 260px;
+  background-color: #c2c3c4;
+ 
+  padding: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.cont2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 100%; /* make sure it’s not limiting */
+  width: 100%; /* ensure full width usage */
+}
+
+
+.headerbelow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    padding: 2px 8px; /* less vertical padding */
+  margin: 1px;
+  font-size: 0.9rem; /* smaller font size */
+   background-color: #c2c3c4;
+;
+}
+.headerbelow h3 {
+  line-height: 1.2;
+}
+
+.sidebar button {
+  background-color: #3399ff; /* soft blue shade */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  align-items: center;
+  margin-left: 40px;
+  margin-top: 34px; /* ensure it's pushed down if flexbox is not enough */
+}
+
+.sidebar button:hover {
+  background-color: #267fd9; /* darker blue on hover */
+}
+
+.row1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  align-items: center; /* Vertically center icon and text */
+  gap: 8px; /* Optional: space between icon and text */
+}
+
+.row1 h3{
+  margin-bottom: 3px;
+ /* border-bottom: 3px;*/
+  padding-bottom: 8px;
+
+}
+
+.row2{
+  margin-top: 100px;
+  margin-left: 16px;
+  list-style-type: none;
+}
+
+.row2 ul {
+  list-style-type: none;
+  padding-left: 0; /* Optional: Removes default padding */
+  margin: 0; /* Optional: Removes default margin */
+}
+
+.row {
+  display: flex;
+  align-items: center; /* Vertically center icon and text */
+  gap: 8px; /* Optional: space between icon and text */
+  list-style-type: none; /* Just in case it's not inherited */
+}
+
+
+
+/* Base sidebar styles */
+.sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+/* Collapse width */
+.cont1.sidebar-collapsed .sidebar {
+  width: 70px;
+}
+
+/* Hide sidebar text when collapsed */
+.cont1.sidebar-collapsed .sidebar h3,
+.cont1.sidebar-collapsed .sidebar .row2 li span,
+.cont1.sidebar-collapsed .sidebar button {
+  display: none;
+}
+
+/* Center icons when collapsed */
+.cont1.sidebar-collapsed .sidebar .row2 li {
+  justify-content: center;
+  padding-left: 0;
+}
+
+/* User icon and name */
+.cont1.sidebar-collapsed .sidebar .row1 h3 {
+  display: none;
+}
+
+.cont1.sidebar-collapsed .sidebar .row1 svg.MdPerson2 {
+  margin: 0 auto;
+  display: block;
+  font-size: 2.5rem;
+}
+
+/* List icon size */
+.sidebar .row2 li svg {
+  font-size: 1.4rem;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+/* Bigger icons when collapsed */
+.cont1.sidebar-collapsed .sidebar .row2 li svg {
+  font-size: 1.8rem;
+  margin-right: 0;
+}
+
+/* Arrow toggle logic */
+.arrow-back,
+.arrow-forward {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Show only forward arrow when collapsed */
+.cont1.sidebar-collapsed .arrow-back {
+  display: block;
+}
+.cont1.sidebar-collapsed .arrow-forward {
+  display: none;
+}
+
+/* Show only back arrow when expanded */
+.cont1:not(.sidebar-collapsed) .arrow-back {
+  display: none;
+}
+.cont1:not(.sidebar-collapsed) .arrow-forward {
+  display: block;
+}
+
+.notelink {
+  text-decoration: none; /* Remove underline */
+  color: inherit;        /* Use current text color, not default link blue */
+  display: block;        /* So it behaves like a block (takes full width) */
+}
+
+.typehere {
+  width: 100%;
+  height: 300px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 13px; /* This must match the background line spacing */
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff,
+    #fff 20px,
+    #ccc 24px
+  );
+  border: 1px solid #ccc;
+  outline: none;
+  resize: vertical;
+  padding-top: 13px;
+  font-family: 'Courier New', monospace;
+  box-sizing: border-box;
+}
+.btn{
+    background-color: #ff5f33; /* soft blue shade */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  align-items: center;
+  margin-left: 40px;
+  margin-top: 34px; 
+}
+
+
+.typehere:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
 }
